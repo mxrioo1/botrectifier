@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Rectifier Discord</title>
+<style>
+  html, body {
+    margin:0; padding:0;
+    width:100%; height:100%;
+    background:black; color:white;
+    font-family: Arial, sans-serif;
+    display:flex; justify-content:center; align-items:center;
+    overflow:hidden;
+  }
+  #container { text-align:center; }
+  h1, p { opacity:0; transition:opacity 2s; }
+  #menu { display:none; margin-top:20px; }
+  button { padding:12px 20px; margin:6px; font-size:16px; border-radius:8px; cursor:pointer; }
+  iframe { display:none; width:80vw; height:45vw; margin-top:20px; border:none; }
+  #exitBtn { display:block; margin-top:12px; }
+</style>
+</head>
+<body>
+<div id="container">
+  <h1 id="title">Bienvenido a juegos con Mario!</h1>
+  <p id="hint">Para continuar, aprieta cualquier letra</p>
+  <div id="menu">
+    <button id="opt1">Opción 1</button>
+    <button id="opt2">Opción 2</button>
+    <button id="exitBtn">Salir</button>
+  </div>
+  <iframe id="video" src="" allow="autoplay" allowfullscreen></iframe>
+</div>
+
+<script>
+const title = document.getElementById('title');
+const hint = document.getElementById('hint');
+const menu = document.getElementById('menu');
+const opt1 = document.getElementById('opt1');
+const opt2 = document.getElementById('opt2');
+const exitBtn = document.getElementById('exitBtn');
+const video = document.getElementById('video');
+
+// Fade-in inicial
+setTimeout(()=>{title.style.opacity=1;},200);
+setTimeout(()=>{hint.style.opacity=1;},800);
+
+// Al presionar cualquier tecla, mostrar opciones
+window.addEventListener('keydown', ()=>{
+  menu.style.display='block';
+  hint.style.display='none';
+});
+
+// Función para reproducir jumpscare (video de YouTube)
+function playVideo(id){
+  video.src = `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&loop=0&mute=0`;
+  video.style.display='block';
+}
+
+// Botones con jumpscare del video
+opt1.addEventListener('click', ()=>playVideo('uZpMmP5EUEI'));
+opt2.addEventListener('click', ()=>playVideo('uZpMmP5EUEI'));
+
+// Salir: ocultar video y mostrar opciones
+exitBtn.addEventListener('click', ()=>{
+  video.style.display='none';
+  video.src='';
+});
+</script>
+</body>
+</html>
